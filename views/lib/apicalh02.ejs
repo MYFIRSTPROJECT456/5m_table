@@ -1,0 +1,41 @@
+<!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin mobile sidebar expand / collapse button -->
+                <div class="navbar-header">
+                    <a href="javascript:void(0);" onclick="javascript:startTour();" class="navbar-brand" data-step="1" data-intro="This is Channel Partner Page!"><span><img src="assets/img/logo.png" width="40" height="40" alt="" /></span>Fieldview</a>
+                </div>
+                <!-- end mobile sidebar expand / collapse button -->
+                
+                <!-- begin header navigation right -->
+                <ul class="nav navbar-nav navbar-right">
+
+                   <li>
+                       <form class="navbar-form full-width data-step="2" id="lform">
+                            <div class="form-group">
+                                <input type="text" id = "leadsearch" class="form-control" placeholder="Lead Name" name="lead" required  />
+                                <input type="hidden" id="lval" name="lval"/>
+                            </div>
+                         </form> 
+                    </li>
+    
+                    <li class="dropdown navbar-user data-step="2" data-intro="This is user profile onclick this you get a option to change the password and logout "">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="assets/user.png" alt="" /> 
+                            <span class="hidden-xs"><%user.enname%></span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInLeft">
+                            <li class="arrow"></li>
+                            <li><a href="/profile">Change Password</a></li>
+                            <li><a href="/logout">Log Out</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+        

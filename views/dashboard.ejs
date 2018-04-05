@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<%- include lib/apicalh01 %>
+
+  <link href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/plugins/DataTables/extensions/Scroller/css/scroller.bootstrap.min.css" rel="stylesheet" />
+ 
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- styles -->
+
+    <link href="assets/css/demo.css" rel="stylesheet">
+
+    <!-- Add IntroJs styles -->
+    <link href="assets/css/introjs.css" rel="stylesheet">
+
+    <link href="assets/plugins/DataTables/extensions/Scroller/css/scroller.bootstrap.min.css" rel="stylesheet" />
+
+  <body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+
+      <!-- begin #sidebar -->
+      <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+          <!-- begin sidebar user -->
+          <ul class="nav">
+            <li class="nav-profile">
+              <div class="image">
+                <a href="javascript:;"><img src="assets/img/user.png" alt="" /></a>
+              </div>
+              <div class="info">
+             </div>
+           </li>
+           <li><a href="javascript:menuclick(1);"><span>Account</span></a></li>
+            <li><a href="javascript:menuclick(2);"><span>Account OP Balance</span></a></li>
+            <li><a href="javascript:menuclick(3);"><span>Account Group</span></a></li>
+            <li><a href="javascript:menuclick(4);"><span>Bank</span></a></li>
+            <li><a href="javascript:menuclick(5);"><span>Bank transaction</span></a></li>
+            <li><a href="javascript:menuclick(6);"><span>Branch</span></a></li>
+            <li><a href="javascript:menuclick(7);"><span>Cash transaction</span></a></li>
+            <li><a href="javascript:menuclick(8);"><span>Customer</span></a></li>
+            <li><a href="javascript:menuclick(9);"><span>Financial year</span></a></li>
+            <li><a href="javascript:menuclick(10);"><span>JV ?</span></a></li>
+            <li><a href="javascript:menuclick(11);"><span>Sales order</span></a></li>
+        </ul>
+            <form id="lform" style="display: none;">
+                            <div class="form-group">
+                                <input type="hidden" id="lval" name="lval"/>
+                            </div>
+                         </form> 
+         <!-- end sidebar user -->
+       </div>
+       <!-- end sidebar scrollbar -->
+     </div>
+     <!-- end #sidebar -->
+     <div id="content" class="content">
+ 
+</div>
+</div>
+<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- end page container -->
+
+    
+                    <!-- ================== BEGIN BASE JS ================== -->
+                    <%- include lib/apicalf02.ejs %>  
+                    <!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
+<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+<script src="assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/buttons.bootstrap.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/buttons.flash.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/jszip.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/pdfmake.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/vfs_fonts.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/buttons.html5.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Buttons/js/buttons.print.min.js"></script>
+<script src="assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/js/apical/table-manage-scroller.demo.js"></script>
+
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+   <script src="assets/js/apps.min.js"></script>
+   <script src="assets/plugins/parsley/dist/parsley.js"></script>
+   <!-- ================== END PAGE LEVEL JS ================== -->
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+      App.init();
+      });
+
+function menuclick(id){
+      document.getElementById('lval').value=id;
+               var form = $('#lform');
+               form.attr('action', '/transaction');
+               form.attr('method', 'POST');
+               form.submit();
+}
+
+</script>
+
+
+                    </body>
+
+                    </html>

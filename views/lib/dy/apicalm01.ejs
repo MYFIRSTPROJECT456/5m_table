@@ -1,0 +1,46 @@
+<ul class="nav">
+  <li class="nav-header">Navigation</li>
+  <%
+var p1 = user.coid;
+var p2 = user.loginid;
+var pmenuid =0;
+var rowpmenuid = 0;
+console.log("Partial data");
+console.log(p1);
+console.log(p2);
+var data1=menudata;
+
+data1.forEach(function(row) {
+console.log("inside function");
+ rowpmenuid = row.pmenuid;
+	if (rowpmenuid  > 0)
+     {
+		if (pmenuid=rowpmenuid)
+		{ %>
+    <li><a href=<%=row.object %>><%=row.menuname %></a></li>
+    <%	}
+		else
+		{
+		pmenuid = rowpmenuid;
+		%>
+</ul>
+<ul class="sub-menu">
+  <li><a href=<%=row.object %>><%= row.menuname %></a>
+    <%}
+console.log(row);
+}
+     else
+     {
+	if(rowpmenuid  = 0)
+	{
+		%>
+      <ul class="sub-menu">
+        <li class="has-sub"><a href="javascript:;"><b class="caret pull-right"></b><i class="fa fa-laptop"></i><span><%=row.menuname %></span></a>
+          <%
+	}
+     }
+
+  });
+console.log("End of loop"); %>
+            <!--<li><a href="/uploadfile"><i class="fa fa-upload "></i> <span>Uploadfile</span></a></li>-->
+      </ul>

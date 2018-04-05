@@ -1,0 +1,173 @@
+<%
+var group=null;
+var i=2;
+console.log("***fields****",fields);
+fields.forEach (function(field){
+
+if(group != null && group !=field.col12){ 
+%>
+ </div>
+                                            <!-- end row -->
+</fieldset>
+</div>
+<%
+}
+
+if(group !=field.col12){ 	i++;%>
+
+	<div>
+		<fieldset>
+                                            <!-- begin row -->
+                                            <div class="row col-md-12">
+	<% 
+	group =field.col12;
+}
+
+  			switch(field.col8){
+        		case 1:  %>
+  								<div class="form-group">
+									<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+									<div class="col-md-6">
+										<input class="form-control" type="text" id="<%= field.col3 %>" name="<%= field.col4 %>"  placeholder="<%= field.col5%>"
+			<% 
+				var values="";
+				if (field.refnumber > 0){
+				for(var i=0; i < parseInt(field.maxlength, 10); i++) {
+				values += "*";
+				 }
+				 refids[refids.length]=field.col3;
+				 }%>
+										value="<%= values %>"
+				<% var str = field.col9;
+				var validationbits = str.split('');
+				if(validationbits[0] == '1'){
+				%>
+				required
+										<% }%>/>
+									</div>
+								</div>
+				<% break;
+				case 2:  %>
+				<div class="form-group">
+                            <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+                                  <div class="col-md-6">
+                                        <input type="text" class="form-control datepicker" name="<%= field.col4 %>" placeholder="Select Date" value="04/1/2014" />
+                                    </div>
+                                </div>
+				<% break;
+				case 3:  %><div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+									<div class="col-md-6">
+										<input type="text" name="<%= field.col4 %>" id="jquery-autocomplete" class="form-control" placeholder="Try typing 'a' or 'b'." />
+									</div>
+								</div>
+								<% break;
+				case 4:  %>
+
+					<div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+								<div class="col-md-6">
+								
+									    <select class="form-control multipleSelect" id="<%= field.col3 %>" name="<%= field.col4 %>" api="<%= field.col10 %>" multiple>
+                                       
+                                            <option value="NA">NA</option>
+                                          
+                                        </select>
+             
+									</div>
+								</div>
+
+				<% break;
+				case 5:  %>
+
+					<div class="form-group">
+									<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+							<div class="col-md-6">
+						
+									    <select class="form-control selectpicker" data-live-search="true" id="<%= field.col3 %>" name="<%= field.col4 %>" api="<%= field.col10 %>" >
+                                            <option value="NA" selected>NA</option>
+                                         
+                                        </select>
+									</div>
+								</div>
+
+				<% break;
+				case 6:  %>
+
+				  				<div class="form-group">
+                             <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+                              <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" >
+                                                Checkbox Label 1
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" >
+                                                Checkbox Label 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<% break;
+				case 7:  %>
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="<%= field.col3 %>"><%= field.col4 %></label>
+                                    <div class="col-md-6">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= field.col4 %>" value="0" checked />
+                                                Radio option 1
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= field.col4 %>" value="1" />
+                                                Radio option 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<% break;
+				case 13:  %>
+
+ 									<div class="form-group">
+                                  <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+                                 <div class="col-md-6">
+                                        <textarea class="form-control" placeholder="<%= field.col5%>" rows="5" name="<%= field.col4 %>"></textarea>
+                                    </div>
+                                	</div>
+
+				<% break;
+				case 14:  %>
+
+							<div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col4 %></label>
+								<div class="col-md-6">
+										<div class="input-group bootstrap-timepicker">
+											<input id="timepicker" type="text" class="form-control" name="<%= field.col4 %>" />
+											<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+										</div>
+									</div>
+								</div>
+
+				<% break;
+				case 15:  %>
+
+				<% break;
+				case 16: break; %>
+
+<!-- end of switch and for loop -->
+<%
+}
+
+});
+console.log("Reference ids",String(refids));  %>
+ </div>
+                                            <!-- end row -->
+</fieldset>
+</div>

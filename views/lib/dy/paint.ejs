@@ -1,0 +1,109 @@
+<% switch(field.inputtype){
+  			  case 0: %>
+								<div class="form-group">
+									<label class="control-label col-md-4" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+									<div class="col-md-6">
+											<label class="control-label id="<%= key %>" name="<%= key %>"><%= field.defaultvalue %></label>
+									</div>
+								</div>
+
+        		<% break;
+        		case 1:  %>
+  								<div class="form-group">
+									<label class="control-label col-md-4" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+									<div class="col-md-6">
+									<input class="form-control" id="<%= key %>" name="<%= key %>"  placeholder="<%= field.tooltip %>"
+								pattern=".{<%= field.minlength %>,<%= field.maxlength %>}" maxlength="<%= field.maxlength %>"
+
+								<% 				
+			switch(field.datetype){
+			case 3: %>
+						type="number" 
+			<% break;
+			case 6: %>
+						type="email" 
+			<% break;
+			default: %>
+						type="text" 
+				<%}
+				if(field.mandatory ==  1){
+				%>
+				required
+										<% }%>/>
+									</div>
+								</div>
+				<% break;
+				case 2:  %>
+						<div class="form-group">
+                            <label class="control-label col-md-4" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+                            <div class="col-md-6">
+                            	<input type="text" class="form-control datepicker col-md-4" name="<%= field.key %>" placeholder="Select Date" /> 
+                            </div>
+                        </div>
+
+				<% break;
+				case 4:  %>
+
+					<div class="form-group">
+								<label class="control-label col-md-4" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+								<div class="col-md-6">
+								
+									    <select class="form-control multipleSelect" id="<%= key %>" name="<%= key %>" api="<%= field.inpreqid %>" multiple>
+                                       
+                                            <option value="NA">NA</option>
+                                          
+                                        </select>
+             
+									</div>
+								</div>
+
+				<% break;
+				case 5:  %>
+
+					<div class="form-group">
+									<label class="control-label col-md-4" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+							<div class="col-md-6">
+						
+									    <select class="form-control selectpicker" data-live-search="true" id="<%= key %>" name="<%= key %>" api="<%= field.inpreqid %>" >
+                                            <option value="NA" selected>NA</option>
+                                         
+                                        </select>
+									</div>
+								</div>
+
+			<% break;
+				case 7:  
+				var value=field.defaultvalue;
+				var radiooptions=value.toString().split("/");
+				%>
+                        <div class="form-group">
+                                    <label class="col-md-4 control-label" for="<%= key %>"><%= key %><% if(field.mandatory ==  1){%>*<% }%></label>
+                                    <div class="col-md-6">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= key %>" value="0" checked />
+                                                <%=radiooptions[0]%>
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= key %>" value="1" />
+                                                <%=radiooptions[1]%>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+				<% break;
+				case 13:  %>
+
+ 									<div class="form-group">
+                                  <label class="control-label col-md-4" for="<%= key %>"><%= key %></label>
+                                 <div class="col-md-6">
+                                        <textarea class="form-control" placeholder="<%= key%>" rows="5" name="<%= key %>"></textarea>
+                                    </div>
+                                	</div>
+				<% break;
+
+
+}
+%>

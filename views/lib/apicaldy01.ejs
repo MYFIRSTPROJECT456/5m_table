@@ -1,0 +1,188 @@
+<%
+var group=null;
+var i=1;
+console.log("***fields****",fields);
+fields.forEach (function(field){
+
+if(group != null && group !=field.fld_grp){ 
+%>
+ </div>
+                                            <!-- end row -->
+</fieldset>
+</div>
+<%
+}
+
+if(group !=field.fld_grp){ 	i++;%>
+
+	<div>
+		<fieldset>
+                                            <!-- begin row -->
+                                            <div class="row col-md-12">
+	<% 
+	group =field.fld_grp;
+}
+
+  			switch(field.fld_inputtype){
+        		case 1:  %>
+  								<div class="form-group">
+									<label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+									<div class="col-md-6">
+										<input class="form-control" type="text" id="<%= field.fldno %>" name="<%= field.fldno %>"  placeholder="<%= field.fld_tooltip%>"
+			<% 
+				var values="";
+				if (field.refnumber > 0){
+				for(var i=0; i < parseInt(field.maxlength, 10); i++) {
+				values += "*";
+				 }
+				 refids[refids.length]=field.fldno;
+				 }%>
+										value="<%= values %>"
+				<% var str = field.fld_validation;
+				var validationbits = str.split('');
+				if(validationbits[0] == '1'){
+				%>
+				required
+										<% }%>/>
+									</div>
+								</div>
+				<% break;
+				case 2:  %>
+				<div class="form-group">
+                            <label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+                                  <div class="col-md-6">
+                                        <input type="text" class="form-control datepicker" id="datepicker-default" placeholder="Select Date" value="04/1/2014" />
+                                    </div>
+                                </div>
+				<% break;
+				case 3:  %><div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+									<div class="col-md-6">
+										<input type="text" name="" id="jquery-autocomplete" class="form-control" placeholder="Try typing 'a' or 'b'." />
+									</div>
+								</div>
+								<% break;
+				case 4:  %>
+
+					<div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+								<div class="col-md-6">
+								
+									    <select class="form-control multipleSelect" id="<%= field.fldno %>" multiple>
+                                       
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                        </select>
+             
+									</div>
+								</div>
+
+				<% break;
+				case 5:  %>
+
+					<div class="form-group">
+									<label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+							<div class="col-md-6">
+						
+									    <select class="form-control selectpicker" data-live-search="true" id="<%= field.fldno %>">
+                                            <option value="" selected>Select a Country</option>
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                        </select>
+									</div>
+								</div>
+
+				<% break;
+				case 6:  %>
+
+				  				<div class="form-group">
+                             <label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+                              <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" >
+                                                Checkbox Label 1
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" >
+                                                Checkbox Label 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<% break;
+				case 7:  %>
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="<%= field.fldno %>"><%= field.fld_name %></label>
+                                    <div class="col-md-6">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="option1" checked />
+                                                Radio option 1
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="option2" />
+                                                Radio option 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<% break;
+				case 13:  %>
+
+ 									<div class="form-group">
+                                  <label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+                                 <div class="col-md-6">
+                                        <textarea class="form-control" placeholder="Textarea" rows="5"></textarea>
+                                    </div>
+                                	</div>
+
+				<% break;
+				case 14:  %>
+
+							<div class="form-group">
+								<label class="control-label col-md-4" for="<%= field.fldno %>"><%= field.fld_name %></label>
+								<div class="col-md-6">
+										<div class="input-group bootstrap-timepicker">
+											<input id="timepicker" type="text" class="form-control" />
+											<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+										</div>
+									</div>
+								</div>
+
+				<% break;
+				case 15:  %>
+
+				<% break;
+				case 16: break; %>
+
+<!-- end of switch and for loop -->
+<%
+}
+
+});
+console.log("Reference ids",String(refids));  %>
+ </div>
+                                            <!-- end row -->
+</fieldset>
+</div>

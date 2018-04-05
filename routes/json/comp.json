@@ -1,0 +1,76 @@
+{
+  "company":
+   { "coid":"5",
+     "coguid":"9056bf11-8e60-11e7-bce2-000d3a1134dd",
+     "coshotname":"acc",
+     "Name":"The Associated Cement Companies Ltd",
+     "Industry": "Cement Manufacturing",
+     "Ho-Address":"Cement House, Mumbai - 40001",
+     "currency":"indian-rupees",
+     "logo":"..\\9056bf11-8e60-11e7-bce2-000d3a1134dd\\images\\comlogo.png",
+     "contents":"..\\9056bf11-8e60-11e7-bce2-000d3a1134dd\\contents\\",
+     "Branches":
+    [
+      {
+      "Name" : "Coimbatore",
+      "Address": " Race-Cource, Coimbatore",
+      "GSTNumber":""
+      },
+      {
+      "Name" : "Hydrabad",
+      "Address": " Banjarahills, Hydrabad",
+      "GSTNumber":""
+    }
+    ],
+    "Settings" :
+    {
+      "licenseControl":
+      [
+        {
+          "totalusers":100
+        }
+      ],
+      "syscontrol":
+      [ 
+        {"docnogen":1,
+        "encrypt": 1,
+        "sanctions":1
+        }
+      ]
+    },
+      "Modules":
+      [ {"Sales": 1,
+         "salecontrol":
+         [
+             {
+               "soack":"0",
+               "sovaluesanction":"1",
+               "sorejectionflow":"recreate / resent",
+               "sodespatchstockcheck":"1",
+               "soposting":"despatch / SalesInvoice"
+             }
+         ],
+        "Purchase": 0,
+         "purchasecontrol":
+         [
+             {
+                "povaluesanction":"1",
+                "porejectionflow":"recreate / resent",
+                "poposting":"grn/purhcaseinvoice/inspection"
+            }
+        ],
+        "Accounting": 1,
+        "accountcontrol":
+        [
+            {
+                "postingvaluesanction":"1",
+                "postingrejectionflow":"recreate / resent",
+                "popostingongrn":"1",
+                "curconversion":"Datewise/weeklyavg/monthlyavg",
+                "poston":"docgen / docrefdate / approvaldate /valuedate"
+            }
+        ]
+      }
+      ]
+    }
+   }

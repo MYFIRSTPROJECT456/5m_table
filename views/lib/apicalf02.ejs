@@ -1,0 +1,46 @@
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<script src="assets/plugins/autocomplete/autocomplete.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<script>
+
+$(window).load(function(e) {
+                          
+
+			$.ajax({
+				type: "GET",
+				url: "/leadsearchauto",
+				timeout: 2000,
+				contentType: 'application/json',
+				success: function(response) {
+					var fdata = JSON.parse(JSON.stringify(response));
+					$('#leadsearch').autocomplete({source:[{
+						data:fdata,
+						valueKey:'title',
+						getTitle:function(item){
+							return item['title']
+						},
+						getValue:function(item){
+							return item['title']
+						},	
+					}]}).on('selected.xdsoft',function(e,datum){
+						/*alert(datum.id);
+						alert(datum.title);*/
+						document.getElementById('lval').value=datum.id;
+						   var form = $('#lform');
+						   form.attr('action', '/historydata');
+						   form.attr('method', 'POST');
+						   form.submit();
+					});
+
+				}
+			});
+			 });
+	</script>

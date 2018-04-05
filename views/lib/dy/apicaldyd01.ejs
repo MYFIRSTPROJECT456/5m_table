@@ -1,0 +1,153 @@
+<%
+var group=null;
+var i=2;
+var mandatory;
+fieldstsk_d.forEach (function(field){
+mandatory=false;
+ var str = field.col9;
+				var validationbits = str.split('');
+				if(validationbits[0] == '1'){
+				mandatory=true;
+				}
+
+if(group != null && group != field.col12){ 
+ 	%>
+	</div>
+<% }
+
+if(group != field.col12){ 	
+	i++;%>
+
+    <div class="col-md-11">
+	<% 	group = field.col12;
+}
+  		switch(field.col8){
+        		case 1:  %>
+  						<div class="row form-group col-md-12" style="margin-bottom: 10px">
+							<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+							<div class="col-md-8">
+								<input class="form-control" id="<%= field.col3 %>" name="<%= field.col4 %>"  placeholder="<%= field.col5%>""  maxlength="<%= field.col18 %>"
+			<% 				
+			switch(field.col7){
+			case 3: %>
+						type="number" 
+			<% break;
+			case 6: %>
+						type="email" 
+			<% break;
+			default: %>
+						type="text" 
+				<%}
+					if(mandatory){
+				%>
+				required
+										<% }%>/>			</div>
+						</div>
+				<% break;
+				case 2:  %>
+						<div class="row form-group col-md-12">
+                            <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+                            <div class="col-md-8">
+                            	<input type="text" class="form-control datepicker" name="<%= field.col4 %>" placeholder="Select Date"  /> 
+                            </div>
+                        </div>
+				<% break;
+				case 3:  %>
+						<div class="row form-group col-md-12">
+							<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+							<div class="col-md-8">
+									<input type="text" name="<%= field.col4 %>" id="jquery-autocomplete" class="form-control"  />
+							</div>
+						</div>
+				<% break;
+				case 4:  %>
+						<div class="row form-group col-md-12">
+							<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+							<div class="col-md-8">
+								<select class="form-control selectpicker" id="<%= field.col3 %>" name="<%= field.col4 %>" api="<%= field.col10 %>">
+                                    <option value="NA" selected>NA</option>
+                                </select>
+							</div>
+						</div>
+				<% break;
+				case 5:  %>
+						<div class="row form-group col-md-12">
+							<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+							<div class="col-md-8">
+							    <select class="form-control selectpicker" data-live-search="true" id="<%= field.col3 %>" name="<%= field.col4 %>" api="<%= field.col10 %>">
+                                    <option value="NA" selected>NA</option>
+                                    
+                                </select>
+							</div>
+						</div>
+				<% break;
+				case 6:  %>
+		  				<div class="row form-group col-md-12">
+                            <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%><% if(mandatory){%>*<% }%></label>
+                            <div class="col-md-8">
+                                <div class="checkbox">
+                                    <label>
+	                                    <input type="checkbox" value="" >
+                                            Checkbox 1
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                       <input type="checkbox" value="" >
+                                            Checkbox 2
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+				<% break;
+				case 7:  %>
+                        <div class="row form-group col-md-12">
+                                    <label class="col-md-4 control-label" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+                                    <div class="col-md-8">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= field.col4 %>" value="0" checked />
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="<%= field.col4 %>" value="1" />
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<% break;
+				case 13:  %>
+ 						<div class="row form-group col-md-12">
+                            <label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" placeholder="<%= field.col5%>" rows="5" name="<%= field.col4 %>" maxlength="<%= field.col18 %>"></textarea>
+                            </div>
+                        </div>
+				<% break;
+				case 14:  %>
+						<div class="row form-group col-md-12">
+							<label class="control-label col-md-4" for="<%= field.col3 %>"><%= field.col5 %><% if(mandatory){%>*<% }%></label>
+							<div class="col-md-8">
+								<div class="input-group bootstrap-timepicker">
+									<input id="timepicker" type="text" class="form-control" name="<%= field.col4 %>" />
+									<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+								</div>
+							</div>
+						</div>
+				<% break;
+				case 15:  %>
+
+				<% break;
+				case 16: break; %>
+
+<!-- end of switch and for loop -->
+<%
+}
+
+}); %>
+</div>
+ 

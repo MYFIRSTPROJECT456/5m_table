@@ -1,0 +1,102 @@
+<div class="col-md-12">
+
+  <!-- begin row -->
+  <div class="row col-md-12" style="border:1px solid lightgrey; padding: 10px;">
+
+
+    <%
+var group=false;
+var i=0;
+var field;
+
+for (var key in fields) {
+
+try{
+
+field=fields[key];
+console.log(field,i);
+
+if(field.constructor === Array){
+}else{
+if(Object.keys(fields).length > 6){
+if(i == 0 || i == parseInt(Object.keys(fields).length/2) ){
+    %>
+
+      <div class="col-md-6">
+        <%
+    group =true;
+}
+}
+
+%>
+          <%- include paint.ejs %>
+            <%
+i++;
+if(Object.keys(fields).length > 6){
+if(i == (parseInt(Object.keys(fields).length) - 1) || i == (parseInt(Object.keys(fields).length / 2)) ){
+    %>
+      </div>
+      <% }
+}
+
+}
+}catch(err){};
+};
+
+%>
+  </div>
+  <%  if ('lineitems' in fields){ %>
+    <div class="row col-md-12">
+        <table id="example" class="table table-striped table-bordered">
+
+          <thead>
+          <tr>
+          <th></th>
+            <%
+
+
+            for (var key in fields.lineitems[0]) {
+        var value =fields.lineitems[0][key];
+        if(value.constructor === Array){ %>
+          <th>
+                <%= key %>
+              </th>
+       <% }else{
+        if (value.visibility == 1) {%>
+
+              <th>
+                <%= key %>
+              </th>
+
+              <%  }}} %>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+               <td class="details-control"> </td>
+              <% for (var key in fields.lineitems[0]) {
+        var field =fields.lineitems[0][key];
+        if(field.constructor === Array){ %>
+            <td class="example">
+          <div class="form-group">
+                            <a href="javascript:showmodal('<%- key %>');" id="<%- key %>" class="btn btn-white btn-sm"><%= key %></a>
+                            </div>
+                        </div>
+             </td>           
+       <% }else{
+        if (field.visibility == 1) {%>
+
+                <td class="example">
+                  <%- include paint_nolabel.ejs %>
+                </td>
+
+                <%  }
+                }
+          } %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <% } %>
+
+</div>
